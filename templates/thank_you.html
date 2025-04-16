@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thank You</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <header>
+    <h1>Thank You for Your Purchase!</h1>
+    <div class="top-right">
+      <a href="/">Home</a>
+      <a href="/my-tickets">My Tickets</a>
+      <a href="/logout">Logout</a>
+    </div>
+  </header>
+
+  <div class="container">
+    <p>Your transaction has been completed. A confirmation has been recorded.</p>
+    <p>You can view your ticket details in the <a href="/my-tickets">My Tickets</a> section.</p>
+  </div>
+</body>
+</html>

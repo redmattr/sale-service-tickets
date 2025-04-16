@@ -13,6 +13,7 @@
       {% if username %}
         <span>Logged in as {{ username }}</span>
         <a href="/my-tickets">My Tickets</a>
+        <a href="/checkout">Checkout</a>
         <a href="/logout">Logout</a>
       {% else %}
         <a href="/login">Login</a>
@@ -51,7 +52,7 @@
         {% if event.tickets_available == 0 %}
           <button class="buy-btn sold-out" disabled>Sold Out</button>
         {% else %}
-          <form method="POST" action="/purchase">
+          <form method="POST" action="/add-to-cart">
             <input type="hidden" name="event_id" value="{{ event.id }}">
             <input type="hidden" name="event_name" value="{{ event.name }}">
             <input type="hidden" name="price" value="{{ event.price }}">

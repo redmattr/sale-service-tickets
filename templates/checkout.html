@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <header>
+    <h1>Checkout</h1>
+    <div class="top-right">
+      {% if username %}
+        <span>Logged in as {{ username }}</span>
+        <a href="/">Home</a>
+        <a href="/logout">Logout</a>
+      {% else %}
+        <a href="/login">Login</a>
+      {% endif %}
+    </div>
+  </header>
+
+  <div class="container">
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class="flashes">
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    {% if cart and cart|length > 0 %}
+      <h2>Your Cart</h2>
+      <ul>
+        {% set total = 0 %}
+        {% for item in cart %}
+          <li>
+            <strong>{{ item.event_name }}</strong> - ${{ item.price }}
+            {% set total = total + item.price|float %}
+          </li>
+        {% endfor %}
+      </ul>
+      <p><strong>Total:</strong> ${{ total }}</p>
+      <form method="POST" action="/complete-purchase">
+        <button type="submit" class="buy-btn">Complete Purchase</button>
+      </form>      
+    {% else %}
+      <p>Your cart is empty.</p>
+    {% endif %}
+  </div>
+</body>
+</html>
