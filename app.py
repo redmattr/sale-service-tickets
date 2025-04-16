@@ -8,6 +8,9 @@ from routes import routes
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Needed for session management
 
+from . import db
+db.init_app(app)
+
 # Temporary data for events
 app.config['EVENTS'] = [
     {"id": 1, "name": "Overwatch Invitational", "date": "July 30, 2025", "time": "3 PM", "tickets_available": 0, "price": 45},
