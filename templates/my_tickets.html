@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Tickets</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <header>
+    <h1>My Tickets</h1>
+    <div class="top-right">
+      <a href="/">Home</a>
+      <a href="#">Logout</a>
+    </div>
+  </header>
+  <nav>
+    <a href="/">Browse Events</a>
+    <a href="#">Support</a>
+  </nav>
+
+  <div class="container">
+    {% if tickets %}
+      {% for ticket in tickets %}
+        <div class="event-listing">
+          <h3>{{ ticket.event_name }}</h3>
+          <p>Date: {{ ticket.date }} | Time: {{ ticket.time }}</p>
+          <p>Seat Number: {{ ticket.seat_number }}</p>
+          <p>Venue: {{ ticket.venue_name }}</p>
+          <p>Price Paid: ${{ ticket.price }}</p>
+        </div>
+      {% endfor %}
+    {% else %}
+      <p>You don't have any tickets yet.</p>
+    {% endif %}
+  </div>
+</body>
+</html>

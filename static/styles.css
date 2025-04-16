@@ -1,0 +1,118 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f8f8f8;
+    margin: 0;
+    padding: 0;
+}
+  
+header {
+    background-color: #333;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    position: relative;
+}
+  
+.top-right {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+}
+  
+.top-right a {
+    color: white;
+    margin-left: 1rem;
+    text-decoration: none;
+}
+  
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    background-color: #444;
+    padding: 0.5rem;
+}
+  
+nav a {
+    color: white;
+    text-decoration: none;
+}
+  
+.container {
+    padding: 2rem;
+    max-width: 900px;
+    margin: auto;
+}
+  
+.search {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+  
+.search input {
+    padding: 0.5rem;
+    width: 60%;
+    max-width: 400px;
+}
+  
+.search button {
+    padding: 0.5rem 1rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+  
+.event-listing {
+    background: white;
+    border: 1px solid #ddd;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+}
+  
+.event-listing h3 {
+    margin-top: 0;
+}
+  
+.buy-btn {
+    background-color: #28a745;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+  
+.sold-out {
+    background-color: #aaa;
+    cursor: not-allowed;
+}
+  
+.pagination {
+    text-align: center;
+    margin-top: 2rem;
+}
+  
+.pagination button {
+    padding: 0.5rem 1rem;
+    margin: 0 0.5rem;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+  
+.pagination span {
+    font-weight: bold;
+}
+
+.flashes {
+    list-style: none;
+    padding: 1rem;
+    background-color: #e6ffe6;
+    border: 1px solid #28a745;
+    margin-bottom: 1rem;
+    color: #155724;
+    border-radius: 5px;
+  }  
