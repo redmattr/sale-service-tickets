@@ -8,7 +8,7 @@ from routes import routes
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Needed for session management
 
-from . import db
+from database import db
 db.init_app(app)
 
 # Temporary data for events

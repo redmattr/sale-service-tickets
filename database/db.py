@@ -1,6 +1,8 @@
-from datetime import datetime, sqlite3
+from datetime import datetime
+import sqlite3
 
-from flask import click, current_app, g
+from flask import current_app, g
+import click 
 
 def get_db():
     if 'db' not in g:
@@ -34,3 +36,7 @@ def init_db_command():
 sqlite3.register_converter(
     "timestamp", lambda v: datetime.fromisoformat(v.decode())
 )
+
+def init_app(app):
+    app.teardown_appcontext(close_db)
+    app.cli.add_command(init_db_command)
