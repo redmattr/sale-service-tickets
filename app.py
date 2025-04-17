@@ -6,7 +6,7 @@ from flask import Flask, session
 from routes import routes
 
 app = Flask(__name__)
-app.config['DATABASE'] = 'instance/pyDB.db'
+app.config['DATABASE'] = 'database/pyDB.db'
 app.secret_key = 'your_secret_key'  # Needed for session management
 
 # Imports and initializes database from the database folder
