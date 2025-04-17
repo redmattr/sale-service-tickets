@@ -4,21 +4,25 @@ import sqlite3
 from flask import current_app, g
 import click 
 
+#Establishes a connection to the database
 def get_db():
     if 'db' not in g:
         g.db = sqlite3.connect(
             current_app.config['DATABASE'],
             detect_types=sqlite3.PARSE_DECLTYPES
         )
+        # Allows for us to use column names for viewing
         g.db.row_factory = sqlite3.Row
 
         return g.db
     
+# If there is a db connection current upon request, close connection
 def close_db(e=None):
     db = g.pop('db', None)
     if db is not None:
         db.close()
 
+#Initialize database with standard schema and default values
 def init_db():
     db = get_db()
 
@@ -32,7 +36,7 @@ def init_db_command():
     init_db()
     click.echo('Initialized the database.')
 
-
+# Just registers the datetime to sqlite datetime within the database
 sqlite3.register_converter(
     "timestamp", lambda v: datetime.fromisoformat(v.decode())
 )

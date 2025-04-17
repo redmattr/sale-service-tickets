@@ -8,6 +8,7 @@ from routes import routes
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Needed for session management
 
+# Imports and initializes database from the database folder
 from database import db
 db.init_app(app)
 
