@@ -11,10 +11,10 @@ def get_db():
             current_app.config['DATABASE'],
             detect_types=sqlite3.PARSE_DECLTYPES
         )
-        # Allows for us to use column names for viewing
         g.db.row_factory = sqlite3.Row
 
-        return g.db
+    return g.db
+
     
 # If there is a db connection current upon request, close connection
 def close_db(e=None):
