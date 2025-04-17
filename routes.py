@@ -4,8 +4,8 @@ routes = Blueprint("routes", __name__)
 
 @routes.route("/")
 def index():
-    username = session.get("username")
     events = session.get("events", [])
+    username = session.get("username")
     return render_template("main.html", events=events, username=username)
 
 @routes.route("/my-tickets")
@@ -16,23 +16,10 @@ def my_tickets():
         return redirect(url_for("routes.login"))
 
     tickets = [
-        {
-            "event_name": "NBA Summer League",
-            "date": "August 1, 2025",
-            "time": "6 PM",
-            "seat_number": "B12",
-            "venue_name": "MSG",
-            "price": 40
-        },
-        {
-            "event_name": "Rock the River Festival",
-            "date": "August 3, 2025",
-            "time": "1 PM",
-            "seat_number": "GA",
-            "venue_name": "Riverfront",
-            "price": 35
-        }
+        {"event_name": 'Summer Bash', "date": '2025-06-15', "time": '3 PM', "seat_number": 'A1', "venue_name": 'Liberty Dome', "price": format(51.00, '.2f')},
+        {"event_name": 'Rockfest', "date": '2025-07-04', "time": '3 PM', "seat_number": 'A1', "venue_name": 'Sunset Arena', "price": format(51.00, '.2f')}
     ]
+
     return render_template("my_tickets.html", tickets=tickets, username=username)
 
 @routes.route("/login", methods=["GET", "POST"])
@@ -84,7 +71,11 @@ def checkout():
         return redirect(url_for("routes.login"))
 
     cart = session.get("cart", [])
-    return render_template("checkout.html", cart=cart, username=username)
+    total = 0.00
+    for event in cart:
+        total = total + float(event["price"])
+
+    return render_template("checkout.html", cart=cart, username=username, grandTotal=total)
 
 @routes.route("/thank-you")
 def thank_you():

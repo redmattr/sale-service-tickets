@@ -46,6 +46,7 @@
     {% for event in events %}
       <div class="event-listing">
         <h3>{{ event.name }}</h3>
+        <p>Description: {{ event.desc }}</p>
         <p>Date: {{ event.date }} | Time: {{ event.time }}</p>
         <p>Tickets Available: {{ event.tickets_available }} | From ${{ event.price }}</p>
 
