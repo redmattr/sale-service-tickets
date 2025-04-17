@@ -1,4 +1,4 @@
-USE pyDB.db
+
 
 -- Drop tables in proper order due to foreign key dependencies
 DROP TABLE IF EXISTS tickets;
